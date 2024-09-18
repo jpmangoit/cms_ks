@@ -1,0 +1,35 @@
+<div class="container">
+  <input type="checkbox" id="check">
+  <div class="login form">
+    <header>Login</header>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <input type="text" placeholder="Enter your email" name="email" formControlName="email">
+
+      @if(loginForm.controls['email'].errors?.['required'] && loginForm.controls['email'].touched){
+      <span style="color: red;">email is required</span>
+      }
+      @else if(loginForm.controls['email'].errors?.['email'] && loginForm.controls['email'].touched){
+      <span style="color: red;">email must be in valid format</span>
+
+      }
+      <input type="password" placeholder="Enter your password" name="password" formControlName="password">
+
+      @if(loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].touched){
+      <span style="color: red;">password is required</span>
+      }
+      @else if(loginForm.controls['password'].errors?.['minlength'] && loginForm.controls['password'].touched){
+      <span style="color: red;">password must be atleast 6 characters</span>
+
+      }
+      <br>
+      <a href="#">Forgot password?</a>
+      <input type="submit" class="button" value="Login" [disabled]="loginForm.invalid">
+    </form>
+    <div class="signup">
+      <span class="signup">Don't have an account?
+        <a routerLink="/signup">Signup</a>
+      </span>
+    </div>
+  </div>
+
+</div>
