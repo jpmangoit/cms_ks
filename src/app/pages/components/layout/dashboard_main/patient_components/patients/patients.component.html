@@ -1,85 +1,98 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="dropdown">
+      <input #myInput (change)="loadPatient({page:currentPage,search:myInput.value})" type="email" class="form-control"
+        id="exampleInputEmail1" placeholder="Search">
+
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Filter with gender
+        <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li (click)="loadPatient({page:currentPage,gender:'male'})">Male</li>
+        <li (click)="loadPatient({page:currentPage,gender:'female'})">Female</li>
+
+
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Filter with disease
+        <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        @for(diseaseList of disease;track diseaseList.id;let i=$index){
+        <li (click)="loadPatient({page:currentPage,diseases:diseaseList.name})">{{diseaseList.name}}</li>
+
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3">
+
+    <mat-form-field>
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate id="startDt" placeholder="Start date" (dateChange)="dateRange($event.value,'start')">
+        <input matEndDate id="endDt" placeholder="End date" (dateChange)="dateRange($event.value,'end')">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-2">
+    <button class="btn btn-danger" (click)="clearFilters()">Clear Filters</button>
+
+  </div>
+</div>
+
+
+<br>
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">registration number</th>
-        <th scope="col">name</th>
-        <th scope="col">disease</th>
-        <th scope="col">mobile no</th>
-        <!-- <th scope="col">actions</th> -->
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">registration number</th>
+      <th scope="col">name</th>
+      <th scope="col">disease</th>
+      <th scope="col">mobile no</th>
+      <!-- <th scope="col">actions</th> -->
 
-      </tr>
-    </thead>
-    <tbody>
-      @for(patient of patientList; track patient.id; let i=$index){
-        <tr>
-          <th scope="row">{{patient.registration_no}}</th>
-          <td>{{patient.name}}</td>
-          <td>{{patient.disease}}</td>
-          <td>{{patient.mobile}}</td>
-        </tr>
-      }
-      </tbody>
-  </table>
-  <!-- <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav> -->
+    </tr>
+  </thead>
+  <tbody>
+    @for(patient of patientList; track patient.id; let i=$index){
+    <tr>
+      <th scope="row">{{patient.registration_no}}</th>
+      <td>{{patient.name}}</td>
+      <td>{{patient.disease}}</td>
+      <td>{{patient.mobile}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
 
-  <!-- <nav aria-label="Page navigation example" *ngIf="lastPage > 1">
-    <ul class="pagination">
-      <li class="page-item" [class.disabled]="currentPage === 1">
-        <a class="page-link"  (click)="changePage(currentPage - 1)" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      
-      <li class="page-item" *ngFor="let page of [].constructor(lastPage); let i = index" 
-          [class.active]="currentPage === i + 1">
-        <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
-      </li>
-      
-      <li class="page-item" [class.disabled]="currentPage === lastPage">
-        <a class="page-link"  (click)="changePage(currentPage + 1)" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav> -->
-  <nav aria-label="Page navigation example" *ngIf="lastPage > 1">
-    <ul class="pagination">
-      <!-- Left navigation (previous) -->
-      <li class="page-item" [class.disabled]="currentPage === 1">
-        <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-  
-      <!-- Dynamic page numbers -->
-      <li class="page-item" *ngFor="let page of visiblePages" [class.active]="currentPage === page">
-        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
-      </li>
-  
-      <!-- Right navigation (next) -->
-      <li class="page-item" [class.disabled]="currentPage === lastPage">
-        <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  
+<nav aria-label="Page navigation example" *ngIf="lastPage > 1">
+  <ul class="pagination">
+    <!-- Left navigation (previous) -->
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    <!-- Dynamic page numbers -->
+    <li class="page-item" *ngFor="let page of visiblePages" [class.active]="currentPage === page">
+      <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+    </li>
+
+    <!-- Right navigation (next) -->
+    <li class="page-item" [class.disabled]="currentPage === lastPage">
+      <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

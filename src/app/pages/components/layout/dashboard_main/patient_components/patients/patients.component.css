@@ -1,0 +1,34 @@
+/* .datepicker{
+    margin-top: 5%;
+} */
+/* Hide the underline for the mat-form-field */
+mat-form-field {
+    .mat-form-field-underline {
+      display: none; /* Hides the underline */
+    }
+  }
+  
+  /* In your component's CSS file (patients.component.css) */
+mat-form-field {
+    width: 200px; /* Adjust width as needed */
+  }
+  
+  mat-form-field .mat-form-field-underline {
+    display: none !important; /* Ensure underline is hidden */
+  }
+  
+  mat-form-field input {
+    width: 100%; /* Make sure input fields take full width of the container */
+  }
+  mat-datepicker-toggle {
+    font-size: 5px; /* Adjust the font size as needed */
+  }
+  .mat-datepicker-toggle-button .mat-icon {
+    font-size: 18px !important; /* Adjust the size as needed */
+  }
+  .mat-form-field-wrapper {
+    width: 200px; /* Adjust the width as needed */
+  }
+  .mat-form-field-underline {
+    display: none;
+  }

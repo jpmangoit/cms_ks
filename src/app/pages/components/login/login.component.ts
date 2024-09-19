@@ -1,6 +1,6 @@
 import { AuthService } from '../../../core/service/auth/auth.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-// import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 // import { CommonModule } from '@angular/common';
 import { Component, NO_ERRORS_SCHEMA,OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
@@ -25,7 +25,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
   
-constructor(private toastr: ToastrService,private _authService:AuthService,private router:Router,private fb: FormBuilder){
+constructor(private snackBar:MatSnackBar,private toastr: ToastrService,private _authService:AuthService,private router:Router,private fb: FormBuilder){
 
 
 }
