@@ -58,7 +58,7 @@
       <th scope="col">name</th>
       <th scope="col">disease</th>
       <th scope="col">mobile no</th>
-      <!-- <th scope="col">actions</th> -->
+      <th scope="col">actions</th>
 
     </tr>
   </thead>
@@ -69,6 +69,14 @@
       <td>{{patient.name}}</td>
       <td>{{patient.disease}}</td>
       <td>{{patient.mobile}}</td>
+      <td>
+        <span (click)="patientDetail(patient.id)" class="glyphicon glyphicon-picture me-4"></span>
+
+        <span (click)="clearFilters()" class="glyphicon glyphicon-trash me-4"></span>
+
+        <span (click)="editPatient(patient.id)" class="glyphicon glyphicon-edit"></span>
+
+      </td>
     </tr>
     }
   </tbody>
