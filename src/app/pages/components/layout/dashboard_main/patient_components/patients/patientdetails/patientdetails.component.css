@@ -1,0 +1,102 @@
+/* patient-detail.component.css */
+
+/* Adjust the card's border radius and transition */
+.card {
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  /* Add a hover effect to the card */
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Style the labels */
+  .font-weight-bold {
+    color: #555;
+  }
+  
+  /* Style the span elements */
+  .card-body div div {
+    color: #333;
+  }
+  
+  /* Style buttons */
+  .btn {
+    min-width: 100px;
+  }
+  
+  .btn + .btn {
+    margin-left: 10px; /* For spacing between buttons */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .card-body .row {
+      flex-direction: column;
+    }
+  
+    .card-body .row div {
+      margin-bottom: 10px;
+    }
+  
+    .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .btn + .btn {
+      margin-left: 0;
+    }
+  }
+  /* patient-visit.component.css */
+
+/* Adjust the card's border radius and transition */
+.card {
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  /* Add a hover effect to the card */
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Style the card title */
+  .card-title {
+    color: #007bff; /* Bootstrap primary color */
+  }
+  
+  /* Style the labels */
+  .card-text strong {
+    color: #555;
+  }
+  
+  /* Style the buttons */
+  .btn {
+    min-width: 80px;
+  }
+  
+  /* Ensure icons are properly aligned with text */
+  .btn i {
+    margin-right: 5px;
+  }
+  
+  /* Responsive adjustments for small screens */
+  @media (max-width: 576px) {
+    .card-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .btn {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  
+    .btn:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
