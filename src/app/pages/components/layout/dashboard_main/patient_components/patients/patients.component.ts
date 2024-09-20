@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patients',
@@ -16,7 +17,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   styleUrl: './patients.component.css'
 })
 export class PatientsComponent {
-  constructor(private _authService: AuthService, private toastr: ToastrService, private datePipe: DatePipe) { }
+  constructor(private router:Router,private _authService: AuthService, private toastr: ToastrService, private datePipe: DatePipe) { }
 
   patientList: any;
   currentPage: number = 1;
@@ -157,4 +158,14 @@ export class PatientsComponent {
       this.loadPatient({ page: this.currentPage, visitDate: this.daterange });
     }
   }
+  deletePatient(){
+this._authService.commonApiRqst('delete','')
+  }
+  editPatient(patientId:any){
+    this.router.navigate([`/mainpage/editPatients`,patientId]);  // Now `this` refers to LoginComponent
+}
+patientDetail(patientId:any){
+  this.router.navigate([`/mainpage/patientDetail`,patientId]);  // Now `this` refers to LoginComponent
+
+}
 }

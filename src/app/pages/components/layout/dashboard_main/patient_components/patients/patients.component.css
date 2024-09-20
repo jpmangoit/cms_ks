@@ -32,3 +32,8 @@ mat-form-field {
   .mat-form-field-underline {
     display: none;
   }
+  /* .icon{
+  } */
+.iconss{
+  margin-right: 2px;
+}
