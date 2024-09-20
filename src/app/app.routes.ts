@@ -5,6 +5,8 @@ import { SignupComponent } from './pages/components/signup/signup.component';
 import { MainpageComponent } from './pages/components/layout/mainpage/mainpage.component';
 import { DashboardComponent } from './pages/components/layout/dashboard_main/dashboard/dashboard.component';
 import { PatientsComponent } from './pages/components/layout/dashboard_main/patient_components/patients/patients.component';
+import { EditpatientComponent } from './pages/components/layout/dashboard_main/patient_components/patients/editpatient/editpatient.component';
+import { PatientdetailsComponent } from './pages/components/layout/dashboard_main/patient_components/patients/patientdetails/patientdetails.component';
 
 export const routes: Routes = [
     //by default we show login screen as an initial page
@@ -31,9 +33,14 @@ export const routes: Routes = [
             {
                 path:'patients',
                 component:PatientsComponent
+            },
+            {
+                path:'editPatients/:id',
+                component:EditpatientComponent
+            },
+            {
+                path:'patientDetail/:id',
+                component:PatientdetailsComponent
             }
         ]
-    },
-
-
-];
+    },];
